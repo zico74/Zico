@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 import com.querydsl.jpa.JPQLQuery;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
 import com.zico.helpDesk.domain.model.entity.comm.QCommCode;
-import com.zico.helpDesk.domain.repository.queryDsl.CommCodeRepositoryQueryDsl;
+import com.zico.helpDesk.domain.repository.queryDsl.CommCodeRepositoryCustom;
 
-public class CommCodeRepositoryImpl extends QueryDslRepositorySupport implements CommCodeRepositoryQueryDsl {
+public class CommCodeRepositoryImpl extends QueryDslRepositorySupport implements CommCodeRepositoryCustom {
 
 	public CommCodeRepositoryImpl() {
 		super(CommCode.class);
@@ -24,9 +24,12 @@ public class CommCodeRepositoryImpl extends QueryDslRepositorySupport implements
 		// TODO Auto-generated method stub
 		QCommCode qCommCode = QCommCode.commCode;
 		
+		//JPQLQuery<CommCode> query = from(qCommCode);
 		JPQLQuery<CommCode> query = from(qCommCode);
 		
-		query.groupBy(qCommCode.commCodeId.groupCodeId);
+		query
+		.groupBy(qCommCode.commCodeId.groupCodeId, qCommCode.groupCodeNm)
+		.select(qCommCode.commCodeId.groupCodeId, qCommCode.groupCodeNm);
 		
 		List<CommCode> data = getQuerydsl().applyPagination(pageable, query).fetch();
 		

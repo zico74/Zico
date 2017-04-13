@@ -1,12 +1,12 @@
-package com.zico.helpDesk.domain.repository.comm;
+package com.zico.helpDesk.domain.dao.comm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import com.zico.helpDesk.domain.dao.comm.CommCodeRepository;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
+import com.zico.helpDesk.domain.repository.comm.CommCodeRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

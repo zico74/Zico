@@ -55,7 +55,12 @@ public class CommCode {
 		super();
 		this.commCodeId = commCodeId;
 	}
-
+	
+	public CommCode(String groupCodeNm) {
+		super();
+		this.groupCodeNm = groupCodeNm;
+	}
+	
 	public CommCode(CommCodeId commCodeId, String groupCodeNm, String codeNm, Integer sort, String parentGroupCodeId,
 			String parentCodeId, UseYn useYn, Date regDt, Date modifyDt) {
 		super();

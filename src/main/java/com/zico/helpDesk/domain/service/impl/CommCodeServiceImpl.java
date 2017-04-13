@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zico.helpDesk.comm.Utils;
-import com.zico.helpDesk.domain.dao.comm.CommCodeRepository;
 import com.zico.helpDesk.domain.model.dto.comm.CommCodeDto;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
 import com.zico.helpDesk.domain.model.entity.comm.UseYn;
 import com.zico.helpDesk.domain.model.entity.comm.embedded.CommCodeId;
+import com.zico.helpDesk.domain.repository.comm.CommCodeRepository;
 import com.zico.helpDesk.domain.service.CommCodeService;
 
 @Service("commCodeService")
