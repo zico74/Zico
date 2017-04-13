@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.zico.helpDesk.domain.dao.comm.CommCodeRepository;
 import com.zico.helpDesk.domain.model.dto.comm.CommCodeDto;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
-import com.zico.helpDesk.domain.repository.comm.CommCodeRepository;
+import com.zico.helpDesk.domain.repository.comm.CommCodeDAO;
 import com.zico.helpDesk.domain.service.CommCodeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +28,15 @@ public class CommCodeController {
 	private CommCodeService commCodeService;
 	@Autowired
 	private CommCodeRepository commCodeRepository;
+	@Autowired
+	private CommCodeDAO commCodeDAO;
 	
 	@RequestMapping(value={"/", "/comm/commCodeListView.zico"})
 	public String commCodeListView(Model model,
 			@PageableDefault(direction = Direction.DESC, size = 5) Pageable pageable) {
 		//Page<CommCode> commCodePage = this.commCodeRepository.findCommCodeList(pageable);
-		Page<CommCode> commCodePage = this.commCodeRepository.findCommCodeList(pageable);
+		//Page<CommCode> commCodePage = this.commCodeDAO.findCommCodeList(pageable);
+		Page<CommCode> commCodePage = this.commCodeRepository.findByGroupCodeIdInfo(pageable);
 		
 		for (CommCode code : commCodePage) {
 			log.info("==> {}", code.toString());

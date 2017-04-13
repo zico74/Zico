@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
 
 public interface CommCodeRepositoryQueryDsl {
-	Page<CommCode> findByGroupCodeIdInfo(CommCode commCode, Pageable pagealbe);
+	Page<CommCode> findByGroupCodeIdInfo(Pageable pageable);
 }
