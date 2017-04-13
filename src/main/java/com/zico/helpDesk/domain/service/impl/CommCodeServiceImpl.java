@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zico.helpDesk.comm.Utils;
-import com.zico.helpDesk.domain.dao.comm.CommCodeDao;
+import com.zico.helpDesk.domain.dao.comm.CommCodeRepository;
 import com.zico.helpDesk.domain.model.dto.comm.CommCodeDto;
 import com.zico.helpDesk.domain.model.entity.comm.CommCode;
 import com.zico.helpDesk.domain.model.entity.comm.UseYn;
@@ -16,7 +16,7 @@ import com.zico.helpDesk.domain.service.CommCodeService;
 public class CommCodeServiceImpl implements CommCodeService {
 	
 	@Autowired
-	private CommCodeDao commCodeDao;
+	private CommCodeRepository commCodeRepository;
 	
 	@Override
 	@Transactional
@@ -53,7 +53,7 @@ public class CommCodeServiceImpl implements CommCodeService {
 			data.setSort(commCodeDto.getSort().get(i));
 			data.setUseYn(UseYn.valueOf(commCodeDto.getUseYn().get(i)));
 			
-			this.commCodeDao.save(data);
+			this.commCodeRepository.save(data);
 		}
 		
 		return true;
